@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class TeleportController : MonoBehaviour
 {
     public GameObject player;
-    public int level;
+    public int topicIndex;
     public float interactRadius;
     public TextMeshProUGUI interactText;
+    public GameObject incidentPanel;
 
     PlayerProperties props;
 
@@ -25,21 +25,27 @@ public class TeleportController : MonoBehaviour
         float dist = Vector3.Distance(player.transform.position, transform.position);
         if (dist < interactRadius)
         {
-            if (props.interactingWith != 0 && props.interactingWith != level) return;
-            props.interactingWith = level;
-            interactText.text = "Press [E] to interact with the teleporter!";
+            if (props.interactingWith != 0 && props.interactingWith != topicIndex) return;
+            props.interactingWith = topicIndex;
+            interactText.text = "Press [E] to learn more!";
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                SceneManager.LoadScene(sceneBuildIndex:level);
+                if (incidentPanel != null) {
+                    incidentPanel.SetActive(true);
+                }
+                // incidentText = QueryIncidentText(topicIndex)
             }
         } 
         else 
         {
-            if (props.interactingWith == level && interactText.text != "")
+            if (props.interactingWith == topicIndex && interactText.text != "")
             {
                 interactText.text = "";
                 props.interactingWith = 0;
+                if (incidentPanel != null) {
+                    incidentPanel.SetActive(false);
+                }
             }    
         }
     }
