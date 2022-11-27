@@ -35,6 +35,15 @@ public class TeleportController : MonoBehaviour
                     incidentPanel.SetActive(true);
                 }
                 // incidentText = QueryIncidentText(topicIndex)
+
+                int topicIndex = 0;
+                IncidentData incident = DataImport.newList.getIncident(topicIndex);
+                string incidentText = incident.in_desc;
+                Debug.Log("INCIDENT TEXT: " + incidentText);
+                //string incidentPersonName = incident.name;
+                //float inc_x_cord = incident.x;
+                //float inc_y_cord = incident.y;
+                //int inc_topic = incident.topic;
             }
         } 
         else 
