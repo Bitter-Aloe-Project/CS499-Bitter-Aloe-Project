@@ -5,7 +5,8 @@ using UnityEngine;
 public class IncidentDataList 
 {
     public IncidentData[] theList;
-
+    public int dataSize;
+    
     // Set List 
     // Gets Data from the .CSV file and stores it in to a list - theList
     public void setList(string fileName){
@@ -15,7 +16,7 @@ public class IncidentDataList
         Debug.Log("here new");
         
         // Initialize the Incident Data List - theList
-        int dataSize = data.Count;
+        dataSize = data.Count;
         theList = new IncidentData[dataSize];
 
         // Add each row the the list at an index
