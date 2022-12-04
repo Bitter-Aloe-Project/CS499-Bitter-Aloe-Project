@@ -10,9 +10,13 @@ public class Data : MonoBehaviour
     void Start()
     {
         DataImport.newList.setList(TextAssetData.name);
+        DataImport.newList.setFileName(TextAssetData.name);
         Debug.Log("here2 new");
         Debug.Log(TextAssetData.name);
         DataImport.newList.getTopics();
+        
+        UnitTests TestsObject = new UnitTests();
+        TestsObject.Tests();
     }
 
 }

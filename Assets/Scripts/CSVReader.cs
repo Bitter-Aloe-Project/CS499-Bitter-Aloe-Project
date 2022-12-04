@@ -43,4 +43,11 @@ public class CSVReader
         }
         return list;
     }
+
+    public static string[] readHeader(string file){
+        TextAsset data = Resources.Load (file) as TextAsset;
+        var lines = Regex.Split (data.text, LINE_SPLIT_RE);
+        var header = Regex.Split(lines[0], SPLIT_RE);
+        return header;
+    }
 }

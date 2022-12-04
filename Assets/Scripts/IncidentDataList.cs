@@ -6,7 +6,7 @@ public class IncidentDataList
 {
     public IncidentData[] theList;
     public int dataSize;
-    
+    public string fileName;
 
     // Set List 
     // Gets Data from the .CSV file and stores it in to a list - theList
@@ -37,13 +37,13 @@ public class IncidentDataList
             theList[i].y = (float)data[i]["y"];
             theList[i].topic = (int)data[i]["topic"];
 
-            Debug.Log("inc_index " + theList[i].inc_index + " " + 
+            /*Debug.Log("inc_index " + theList[i].inc_index + " " + 
                 "name " + theList[i].name + " " +
                 "incident " + theList[i].in_desc + " " +
                 "x " + theList[i].x + " " +
                 "y " + theList[i].y + " " +
                 "topic " + theList[i].topic);
-            
+            */
         }
 
         
@@ -113,10 +113,14 @@ public class IncidentDataList
     {
         for (int i = getTopicBegin(topicChoice); i < theList.Length; i++)
         {
-            if (theList[i + 1].topic != topicChoice)
+            if (i+i>=theList.Length){
+                return (theList.Length-1);
+            }    
+            else if (theList[i + 1].topic != topicChoice)
             {
                 return i;
             }
+            
         }
 
         return -1;
@@ -128,6 +132,14 @@ public class IncidentDataList
 
         return notFound;
 */
+    }
+
+    public void setFileName(string fname){
+        fileName = fname;
+    }
+
+    public string getFileName(){
+        return fileName;
     }
 
 }
