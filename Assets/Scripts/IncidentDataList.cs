@@ -7,6 +7,7 @@ public class IncidentDataList
     public IncidentData[] theList;
     public int dataSize;
     
+
     // Set List 
     // Gets Data from the .CSV file and stores it in to a list - theList
     public void setList(string fileName){
@@ -87,5 +88,46 @@ public class IncidentDataList
 
         return notFound;
     }
-    
+
+    //GetTopic
+    public int getTopicBegin(int topicChoice)
+    {
+        for (int i = 0; i < theList.Length; i++)
+        {
+            if (theList[i].topic == topicChoice)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+        //IncidentData notFound = new IncidentData();
+        //notFound.inc_index = -1;
+
+        //Debug.Log("No Incident Found Associated with Index " + topicChoice);
+
+        //return notFound;
+    }
+
+    public int getTopicEnd(int topicChoice)
+    {
+        for (int i = getTopicBegin(topicChoice); i < theList.Length; i++)
+        {
+            if (theList[i + 1].topic != topicChoice)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+/*
+        IncidentData notFound = new IncidentData();
+        notFound.inc_index = -1;
+
+        Debug.Log("No Incident Found Associated with Index " + topicChoice);
+
+        return notFound;
+*/
+    }
+
 }

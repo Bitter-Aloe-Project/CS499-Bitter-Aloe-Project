@@ -11,6 +11,7 @@ public class TeleportController : MonoBehaviour
     public TextMeshProUGUI interactText;
     public GameObject incidentPanel;
     public TextMeshProUGUI incidentText;
+    public int topicChoice;
 
     PlayerProperties props;
     // Start is called before the first frame update
@@ -34,10 +35,12 @@ public class TeleportController : MonoBehaviour
                 if (incidentPanel != null) {
                     incidentPanel.SetActive(true);
                 }
-            
+                //To find an incident based on the topic
+                //IncidentData incident = DataImport.newList.getIncident(UnityEngine.Random.Range(DataImport.newList.getTopicBegin(topicChoice), DataImport.newList.getTopicEnd(topicChoice)));
                 IncidentData incident = DataImport.newList.getIncident(UnityEngine.Random.Range(0, DataImport.newList.dataSize));
                 incidentText.text = incident.topic + " "  + incident.name + " " + incident.in_desc;
-                
+
+                //Debug.Log(DataImport.newList.getTopicEnd(topicChoice));
                 Debug.Log(topicIndex);
                 Debug.Log(incident.name + " INCIDENT TEXT: " + incidentText.text);
                 //string incidentPersonName = incident.name;
