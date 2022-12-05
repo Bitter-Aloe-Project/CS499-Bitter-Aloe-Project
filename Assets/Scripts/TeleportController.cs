@@ -5,6 +5,7 @@ using TMPro;
 
 public class TeleportController : MonoBehaviour
 {
+    // EDITOR VALUES
     public GameObject player;
     public int topicIndex;
     public float interactRadius;
@@ -23,9 +24,11 @@ public class TeleportController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if player in radius
         float dist = Vector3.Distance(player.transform.position, transform.position);
         if (dist < interactRadius)
         {
+            // interaction radius collision
             if (props.interactingWith != 0 && props.interactingWith != topicIndex) return;
             props.interactingWith = topicIndex;
             interactText.text = "Press [E] to learn more!";
@@ -51,6 +54,7 @@ public class TeleportController : MonoBehaviour
         } 
         else 
         {
+            // clear incident panel
             if (props.interactingWith == topicIndex && interactText.text != "")
             {
                 interactText.text = "";
